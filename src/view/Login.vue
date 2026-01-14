@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       readerInfo: {
-        username: '', //用户名伟大
+        username: '', //用户名伟大test
         password: ''  //密码
       },
       //前端校验信息testRules
