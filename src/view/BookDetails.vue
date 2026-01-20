@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       id: '',           //图书id
-      bookInfo: {},     //图书详细信息
+      bookInfo: {},     //图书详细信息哈哈哈哈哈
       coverUrl: ''      //图书封面地址
     };
   },
