@@ -1,0 +1,32 @@
+  #配置数据库连接
+  spring:
+    application:
+      name: tlias-web-management
+    #mysql连接配置
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/tlias
+      username: root
+      password: 123456
+    servlet:
+      multipart:
+        #所有文件
+        max-request-size: 100MB
+        max-file-size: 100MB
+  mybatis:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      map-underscore-to-camel-case: true
+
+  aliyun:
+    oss:
+      endpoint: https://oss-cn-beijing.aliyuncs.com
+      bucketName: java-ai-xlan
+      region: cn-beijing
+  logging:
+    level:
+      # 核心：屏蔽静态资源404的ERROR日志（改为WARN/INFO）
+      org.springframework.web.servlet.resource.ResourceHttpRequestHandler: WARN
+      # 其他业务日志级别保持不变（按需配置）
+      root: INFO
+      com.neuro: INFO

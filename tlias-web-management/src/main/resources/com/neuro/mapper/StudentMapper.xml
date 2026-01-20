@@ -1,0 +1,48 @@
+<!--定义Mapper映射文件的约束和基本结构-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuro.mapper.StudentMapper">
+
+    <!--    批量删除学生信息-->
+    <delete id="deleteByIds">
+        delete from student where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+
+    </delete>
+
+    <!--    多条件查询学生信息-->
+    <select id="getStudent" resultType="com.neuro.pojo.Student">
+        select student.id,student.name,no,gender,phone,degree,id_card,is_college,address,graduation_date,violation_count,violation_score,
+        clazz_id,student.create_time,student.update_time,clazz.name clazzName
+        from clazz,student
+        <where>
+            <if test="name != null and name != ''">
+                AND student.name LIKE concat('%', #{name}, '%')
+            </if>
+
+            <if test="degree != null and degree != ''">
+                AND student.degree = #{degree}
+            </if>
+
+            <if test="clazzId != null and clazzId != ''">
+                AND student.clazz_id = #{clazzId}
+            </if>
+            AND clazz.id = student.clazz_id
+        </where>
+    </select>
+
+    <!--    统计学生学历比例-->
+    <select id="getStudentDegreeData" resultType="java.util.Map">
+        select (case degree when 1 then '初中'
+                            when 2 then '高中'
+                            when 3 then '大专'
+                            when 4 then '本科'
+                            when 5 then '硕士'
+            end) name ,
+               count(*) value from student group by degree;
+    </select>
+
+</mapper>

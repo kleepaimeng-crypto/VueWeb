@@ -1,0 +1,13 @@
+com\neuro\pojo\Emp.class
+com\neuro\pojo\EmpQueryParam.class
+com\neuro\pojo\ClaQueryParam.class
+com\neuro\pojo\Clazz.class
+com\neuro\pojo\Dept.class
+com\neuro\pojo\EmpExpr.class
+com\neuro\pojo\ClazzOption.class
+com\neuro\pojo\PageResult.class
+com\neuro\pojo\StudentQueryParam.class
+com\neuro\pojo\JobOption.class
+com\neuro\pojo\LoginInfo.class
+com\neuro\pojo\Result.class
+com\neuro\pojo\Student.class
